@@ -1,0 +1,7 @@
+Projects and Apps in the context of web developments have different meanings.
+
+An ** App ** is a web application that does something, such as a blog, a database or a small poll.
+
+A ** Project ** is a collection of configurations and apps for a website. 
+
+A Project can contain multiple Apps, a an App can be present in several Projects.
