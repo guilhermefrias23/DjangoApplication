@@ -37,3 +37,43 @@ We can configure the port to which we are running this local server with an argu
 We can also change the IP address of it
  < python manage.py runserver 0.0.0.0:8000>
 
+
+To create an App we run the command:
+ < python manage.py startapp polls >
+This will create an app named polls tat will appear on our directory:
+polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+
+Now we'll create a view.
+
+1. On the polls/views.py file we place the code:
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+
+2. And on the polls/urls.py we place this code:
+from django.urls import path
+from . import views
+urlpatterns = [
+    path("", views.index, name="index"),
+]
+
+3. Now point this url on the polls/urls to the main project:
+from django.contrib import admin
+from django.urls import include, path
+urlpatterns = [
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls),
+]
+
+Running again the python manage.py runserver, we can regenerate the webpage, and if we go to:
+ < http://127.0.0.1:8000/polls/ > Since we are creating a new segment inside the main web application
+We'll be able to see the small message "Hello, world. You're at the polls index."
+
